@@ -210,10 +210,10 @@
             if( $courrier->verifierCode() == true ){
                 echo "0" ;
             }
-            else{
+            /*else{
                 $courrier->save() ;
                 echo "1" ;
-            }
+            }*/
         }
     }
     else{

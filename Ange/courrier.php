@@ -55,7 +55,7 @@
 		public function save() {
 		    $connect = new Connexion ;
 		    $bd = $connect->seConnecter() ;
-		    $requete = $bd->prepare("INSERT INTO courrier (idcourrier, iduser, datearrive, expediteur, objet,
+		    $requete = $bd->prepare("INSERT INTO courrier (idcourrier, iduser, datearrive, expediteur, objet, 
 		    		dateretourfixer, suite, transfert, supprimer, chemin, classer ) 
 		    		VALUES( :id, :iduser, :datearr, :exp, :objet, :dateretour, :suite, 0, 0, :chemin, 0 )") ;
 		    $requete->bindValue(":id",$this->idCourrier ,PDO::PARAM_STR) ;
@@ -66,9 +66,10 @@
 		    $requete->bindValue(":dateretour",$this->dateRetourFixer ,PDO::PARAM_STR) ;
 		    $requete->bindValue(":suite",$this->suite ,PDO::PARAM_STR) ;
 		    $requete->bindValue(":chemin",$this->chemin ,PDO::PARAM_STR) ;
-		    //$requete->bindValue(":classer",$this->suite ,PDO::PARAM_STR) ;
+		    //$requete->bindValue(":classer",$this->classer ,PDO::PARAM_STR) ;
 		    $requete->execute() ;
 		    $requete->closeCursor() ;
+		    echo "yes" ;
 		}
 		public function update( $idc ) {
 		    $connect = new Connexion ;

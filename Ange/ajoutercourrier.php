@@ -5,7 +5,7 @@
 </div>
 
 <div id="zonetexte">
-    <form method="post" action="" name="ajoutercourrier" >
+    <form method="post" action="savecourrier.php" name="ajoutercourrier" enctype="multipart/form-data" >
     <table class="tableformulaire">
         <tr>
             <td></td> <td> <p class="erreur" style="color: white;"></p></td>
@@ -37,7 +37,7 @@
             </td>
         </tr>
     </table>
-    
+	<input type="hidden" name="code" value="ac" />
 </form>
-<iframe id="uploadFrame" name="uploadFrame" src="#"></iframe>
+
 </div>

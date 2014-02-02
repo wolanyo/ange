@@ -30,11 +30,53 @@ $(function() {
     });
     
     $('form[name="ajoutercourrier"]').submit(function(){
-        return false;
+    	if( $('input[name="codecourrier"]').val() == '' || $('input[name="datearriver"]').val() == '' || $('input[name="expediteur"]').val() == '' ||
+            $('textarea[name="objet"]').val() == '' || $('input[name="dateretour"]').val() == '' ){
+            $('.erreur').css('display', 'block') ;
+            $('.erreur').css('background-color', '#C00000') ;
+            $('.erreur').html('Aucun champs ne doit &egrave;tre vide') ;
+            return false;
+         }
+    	else{
+            $.post(
+               'ajax.php', {
+                    idc : $('input[name="codecourrier"]').val(),
+                    datearr : $('input[name="datearriver"]').val(),
+                    exp : $('input[name="expediteur"]').val(),
+                    objet : $('textarea[name="objet"]').val(),
+                    dateretour : $('input[name="dateretour"]').val(),
+                    code : 'ac' }, function(reponseTexte){
+                    var codeExiste = reponseTexte ;
+                    if( codeExiste == 0){
+                        $('.erreur').css('display', 'block') ;
+                        $('.erreur').css('background-color', '#EE2622') ;
+                        $('.erreur').html('Ce numero de courrier existe d&eacute;j&acirc;') ;
+                        $('input[name="codecourrier"]').attr('value','');
+                        return false;
+                    }
+                    else if( codeExiste == 1){
+                        $('.erreur').css('display', 'block') ;
+                        $('.erreur').css('background-color', 'green') ;
+                        $('.erreur').html('Enregistrement &eacute;ffectu&eacute;') ;
+                        $('input[type="text"]').attr('value','');
+						$('input[name="dateretour"]').attr('value','Aucune date');
+                        $('textarea[name="objet"]').attr('value','');
+                        return false;
+                    }
+                    else{
+                        $('.erreur').css('display', 'block') ;
+                        $('.erreur').css('background-color', '#EE2622') ;
+                        $('.erreur').html('Erreur de parametre') ;
+                        alert(reponseTexte);
+                        return false;
+                    }
+               }
+            );   
+        }
     });
     
     //enregistrer un courrier
-    
+    /*
     $('#btvalidercourrier').click(function(){
         if( $('input[name="codecourrier"]').val() == '' || $('input[name="datearriver"]').val() == '' || $('input[name="expediteur"]').val() == '' ||
             $('textarea[name="objet"]').val() == '' || $('input[name="dateretour"]').val() == '' ){
@@ -75,7 +117,7 @@ $(function() {
                }
             );   
         }
-    });
+    });*/
     
     $('form[name="modifiercourrier"]').submit(function(){
         return false;
