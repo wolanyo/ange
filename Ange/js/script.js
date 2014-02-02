@@ -485,6 +485,12 @@ $(function() {
     });
     
     $('#btajoutertransfert').click(function(){
+    	var idrec = $('select[name="idreceveur"]').val() ;
+    	if(idrec != 0){
+            var recev = $('select[name="idreceveur"] option:selected').text() ;
+       		$('input[name ="receveur"]').val( recev ) ;
+       	}
+    	//alert($('input[name ="receveur"]').val( ));
         if( $('input[name="datetransfert"]').val() == '' || $('input[name="receveur"]').val() == '' || $('input[name="objet"]').val() == '' ){
             $('.erreur').css('display', 'block') ;
             $('.erreur').css('background-color', '#C00000') ;
@@ -495,7 +501,9 @@ $(function() {
                'ajax.php',
                {
                     datetransfert : $('input[name="datetransfert"]').val(),
-                    receveur : $('input[name="receveur"]').val(),
+                    idexpediteur : $('input[name="idexpediteur"]').val(),
+                    idreceveur : $('select[name="idreceveur"]').val(),                    
+               		receveur : $('input[name ="receveur"]').val(),
                     objet : $('input[name="objet"]').val(),
                     dateretour : $('input[name="dateretour"]').val(),
                     code : 'tc'
@@ -541,6 +549,11 @@ $(function() {
     //modifier un transfert de courrier
     
     $('#btmodifiertransfert').click(function(){
+    	var idrec = $('select[name="idreceveur"]').val() ;
+    	if(idrec != 0){
+            var recev = $('select[name="idreceveur"] option:selected').text() ;
+       		$('input[name ="receveur"]').val( recev ) ;
+       	}
         if( $('input[name="datetransfert"]').val() == '' || $('input[name="receveur"]').val() == '' || $('input[name="objet"]').val() == '' ){
             $('.erreur').css('display', 'block') ;
             $('.erreur').css('background-color', '#C00000') ;
@@ -551,6 +564,8 @@ $(function() {
                'ajax.php',
                {
                     idtransfert : $('input[name="idt"]').val(),
+                    idexpediteur : $('input[name="idexpediteur"]').val(),
+                    idreceveur : $('select[name="idreceveur"]').val(), 
                     datetransfert : $('input[name="datetransfert"]').val(),
                     receveur : $('input[name="receveur"]').val(),
                     objet : $('input[name="objet"]').val(),
@@ -674,6 +689,20 @@ $(function() {
                 "sLast":     "Dernier"
             }
         }
+    });
+    
+    //autre events
+    $("#combo").change(function(){
+        var valeur = "" ;
+        valeur = $('select[name="idreceveur"] option:selected').text() ;
+        if(valeur == "Autre"){
+        	$('input[name="receveur"]').prop('type', 'text');
+        	$('input[name="receveur"]').val('');
+        }
+        else{
+        	$('input[name="receveur"]').prop('type', 'hidden');
+        }
+        //alert(valeur) ;
     });
     
     //afficher un calendrier pour choisir une date

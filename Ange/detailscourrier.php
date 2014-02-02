@@ -6,7 +6,7 @@
     $droit = $_SESSION['droit'] ;
 ?>
 <div id="here">
-    Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> > <a href="principale.php?page=listecourrier">Liste des courriers</a> > <a href="">D&eacute;tails du courrier</a>
+    Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> <a href="principale.php?page=listecourrier">Liste des courriers</a> <a href="">D&eacute;tails du courrier</a>
 </div>
 
 <div id="zonetexte">
@@ -73,6 +73,7 @@
                 echo '<a class="btn btn-success" href="principale.php?page=modifiercourrier&amp;idc='.$idCourrier.'" >Modifier</a> ';
                 echo '<a class="btn btn-success" href="#" id="lientransfert">Transferer &agrave;</a> ';
                 echo '<a class="btn btn-success" href="'.$chemin.'" >T&eacute;l&eacute;charger</a> ';
+                echo '<a class="btn btn-success" href="#" >Classer</a> ';
                 echo '<a class="btn btn-danger" href="#" id="btsupprimer">Supprimer</a> ' ;
             }
             elseif($droit == "rw" || $droit == "admin"){

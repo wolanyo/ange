@@ -12,7 +12,9 @@
     <form name="transfert" method="post" action="" >
     <table class="tableformulaire">
         <tr>
-            <td></td> <td> <p class="erreur" style="color: white;"></p></td>
+            <td><input type="hidden" name="idexpediteur" <?php echo 'value="'.$_SESSION['iduser'].'"'; ?>></td> 
+            <td> <p class="erreur" style="color: white;"></p></td>
+          
         </tr>
         <tr>
             <td>Code courrier</td> <td> <center><b><?php echo $_SESSION['idc'] ?></b></center> </td>
@@ -21,15 +23,15 @@
             <td>Date de transfert</td> <td> <input class="date" type="text" name="datetransfert" required> </td>
         </tr>
         <tr>
-            <td>&Agrave;</td> 
+            <td>Transferer &agrave;</td> 
             <td>
             <?php
 		        $connect = new Connexion ;
 		        $bd = $connect->seConnecter() ;
 		        $idCourrier = $_SESSION['idc'] ;
-		        $requete = $bd->query("SELECT * FROM user ORDER BY nom ASC, prenom ASC") ;
-		        echo '<select id="combo" name="user">' ;
-		        echo '<option value="Autres">Autres</option>' ;
+		        $requete = $bd->query("SELECT * FROM user WHERE iduser <>".$_SESSION['iduser']." ORDER BY nom ASC, prenom ASC") ;
+		        echo '<select id="combo" name="idreceveur">' ;
+		        echo '<option value="0" selected>Autre</option>' ;
 		        while($donnees = $requete->fetch() ){
 		        	echo '<option value="'.$donnees['iduser'].'">'.$donnees['nom'].' '.$donnees['prenom'].'</option>' ;
 		        }
@@ -38,7 +40,7 @@
             </td>
         </tr>
         <tr>
-            <td>Transferer &agrave;</td> <td> <input type="text" name="receveur" required> </td>
+            <td>Nom du receveur</td> <td> <input type="text" name="receveur" required> </td>
         </tr>
         <tr>
             <td>Objet du transfert</td>

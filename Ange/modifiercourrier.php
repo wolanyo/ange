@@ -38,6 +38,9 @@
                 <td>&Agrave retourner le</td> <td><input class="date" type="text" name="dateretour" required <?php echo 'value="'.$courrier->getDateRetourFixer().'" '; ?>>  </td>
             </tr>
             <tr>
+	            <td>Pi&egrave;ce jointe</td> <td><input class="" type="file" name="fichier" <?php echo 'value="'.$courrier->getChemin().'" '; ?> required >  </td>
+	        </tr>
+            <tr>
                 <td></td>
                 <td>
                     <button class="btn btn-success" type="reset" style="width: 100px;" >Effacer</button>

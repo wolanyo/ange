@@ -37,13 +37,15 @@
         public function setSuiteDonnee($value) { $this->suiteDonnee = $value ; }
         public function setIdExpediteur($value) { $this->idExpediteur = $value ; }
         public function setIdReceveur($value) { $this->idReceveur = $value ; }
-        public function setIdChemin($value) { $this->chemin = $value ; }
+        public function setChemin($value) { $this->chemin = $value ; }
         
         public function save() {
             $connect = new Connexion ;
             $bd = $connect->seConnecter() ;
-            $requete = $bd->prepare("INSERT INTO transfert VALUES( :id, :idc, :dateTr, :receveur, :objet, :drf, :dateRet, :suiteDon, 0 )") ;
-            $requete->bindValue(":id",$this->idTransfert ,PDO::PARAM_INT) ;
+            $requete = $bd->prepare("INSERT INTO transfert (idcourrier, datetransfert, 
+            		receveur, objet, dateretourfixer, dateretour, suitedonnee, supprimer, consulter, idexpediteur, idreceveur)
+            		VALUES(:idc, :dateTr, :receveur, :objet, :drf, :dateRet, :suiteDon, 0 , 0, :idexpediteur, :idreceveur)") ;
+            //$requete->bindValue(":id",$this->idTransfert ,PDO::PARAM_INT) ;
             $requete->bindValue(":idc",$this->idCourrier ,PDO::PARAM_STR) ;
             $requete->bindValue(":dateTr",$this->dateTransfert ,PDO::PARAM_STR) ;
             $requete->bindValue(":receveur",$this->receveur ,PDO::PARAM_STR) ;
@@ -59,12 +61,15 @@
         public function update() {
             $connect = new Connexion ;
             $bd = $connect->seConnecter() ;
-            $requete = $bd->prepare("UPDATE transfert SET datetransfert=:dateTr, receveur=:receveur, objet=:objet, dateretourfixer=:drf WHERE idtransfert=:id ") ;
+            $requete = $bd->prepare("UPDATE transfert SET datetransfert=:dateTr, receveur=:receveur, objet=:objet, dateretourfixer=:drf, 
+            		idexpediteur=:idexp, idreceveur=:idrec WHERE idtransfert=:id ") ;
             $requete->bindValue(":id",$this->idTransfert ,PDO::PARAM_INT) ;
             $requete->bindValue(":dateTr",$this->dateTransfert ,PDO::PARAM_STR) ;
             $requete->bindValue(":receveur",$this->receveur ,PDO::PARAM_STR) ;
             $requete->bindValue(":objet",$this->objet ,PDO::PARAM_STR) ;
             $requete->bindValue(":drf",$this->dateRetourFixer ,PDO::PARAM_STR) ;
+            $requete->bindValue(":idexp",$this->idExpediteur ,PDO::PARAM_INT) ;
+            $requete->bindValue(":idrec",$this->idReceveur ,PDO::PARAM_INT) ;
             $requete->execute() ;
             $requete->closeCursor() ;
         }
@@ -104,7 +109,7 @@
                 $this->dateRetourFixer = reverseDate( $donnees['dateretourfixer'] ) ;
                 $this->dateRetour = reverseDate( $donnees['dateretour'],"-","-" ) ;
                 $this->suiteDonnee = $donnees['suitedonnee'] ;
-                $this->idExpediteur = reverseDate( $donnees['idexpediteur'],"-","-" ) ;
+                $this->idExpediteur = $donnees['idexpediteur'] ;
                 $this->idReceveur = $donnees['idreceveur'] ;
             }
             $requete->closeCursor() ;

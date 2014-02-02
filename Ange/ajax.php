@@ -313,6 +313,8 @@
             else $transfert->setDateRetourFixer( reverseDate($_POST['dateretour']) ) ;
             $transfert->setDateRetour( reverseDate("00-00-0000" )) ;
             $transfert->setSuiteDonnee( "Aucune / Pas de suite pour le moment" ) ;
+            $transfert->setIdReceveur( $_POST['idreceveur'] ) ;
+            $transfert->setIdExpediteur( $_POST['idexpediteur'] ) ;
             $transfert->save() ;
             setCodeTransfert($_SESSION['idc'],'1');
             echo 1 ;
@@ -333,6 +335,8 @@
             $transfert->setDateTransfert( reverseDate($_POST['datetransfert'],'-','-') ) ;
             $transfert->setReceveur( $_POST['receveur'] ) ;
             $transfert->setObjet( $_POST['objet'] ) ;
+            $transfert->setIdReceveur( $_POST['idreceveur'] ) ;
+            $transfert->setIdExpediteur( $_POST['idexpediteur'] ) ;
             $transfert->update() ;
             echo 1 ;
         }

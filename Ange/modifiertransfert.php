@@ -16,7 +16,10 @@
             <legend>Modifier les informations de base du transfert</legend>
             <table class="tableformulaire">
                 <tr>
-                    <td> <input type="hidden" <?php echo 'value="'.$idTransfert.'"'; ?> name="idt" /> </td>
+                    <td> 
+                    	<input type="hidden" <?php echo 'value="'.$idTransfert.'"'; ?> name="idt" /> 
+                    	<input type="hidden" name="idexpediteur" <?php echo 'value="'.$_SESSION['iduser'].'"'; ?>>
+                    </td>
                     <td> <p class="erreur" style="color: white;"></p></td>
                 </tr>
                 <tr>
@@ -24,7 +27,27 @@
                     <td> <input type="text" name="datetransfert" class="date" <?php echo 'value="'.$transfert->getDateTransfert().'"' ; ?>  required> </td>
                 </tr>
                 <tr>
-                    <td>Transferer &agrave;</td>
+		            <td>Transferer &agrave;</td> 
+		            <td>
+		            <?php
+				        $connect = new Connexion ;
+				        $bd = $connect->seConnecter() ;
+				        $idCourrier = $_SESSION['idc'] ;
+				        $requete = $bd->query("SELECT * FROM user WHERE iduser <>".$_SESSION['iduser']." ORDER BY nom ASC, prenom ASC") ;
+				        echo '<select id="combo" name="idreceveur">' ;
+				        echo '<option value="0">Autre</option>' ;
+				        while($donnees = $requete->fetch() ){
+				        	if($donnees['iduser'] == $transfert->getIdReceveur())
+				        		echo '<option value="'.$donnees['iduser'].'" selected>'.$donnees['nom'].' '.$donnees['prenom'].'</option>' ;
+				        	else
+				        		echo '<option value="'.$donnees['iduser'].'">'.$donnees['nom'].' '.$donnees['prenom'].'</option>' ;
+				        }
+				        echo '</select>';
+				    ?>
+		            </td>
+		        </tr>
+                <tr>
+                    <td>Nom du receveur</td>
                     <td> <input type="text" name="receveur" <?php echo 'value="'.$transfert->getReceveur().'"' ; ?> required> </td>
                 </tr>
                 <tr>
