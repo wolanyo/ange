@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<notifications>
+    <notification title="rouge" debut="0" fin="1"/>
+    <notification title="jaune" debut="0" fin="1"/>
+    <notification title="vert" debut="0" fin="1"/>
+</notifications>

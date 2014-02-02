@@ -1,0 +1,89 @@
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuLigth';
+    src: url('../fonts/Ubuntu-L.ttf');
+    url('../fonts/Ubuntu-L.ttf') format('TrueType');
+}
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuCondensed';
+    src: url('../fonts/Ubuntu-C.ttf');
+    url('../fonts/Ubuntu-C.ttf') format('TrueType');
+}
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuMono';
+    src: url('../fonts/Ubuntu-M.ttf');
+    url('../fonts/Ubuntu-M.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuRegular';
+		  src: url('../fonts/Ubuntu-R.ttf');
+		  url('../fonts/Ubuntu-R.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuMonoRegular';
+    src: url('../fonts/UbuntuMono-R.ttf');
+    url('../fonts/UbuntuMono-R.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée Ubuntu */
+    font-family: 'UbuntuMonoBold';
+    src: url('../fonts/UbuntuMono-B.ttf');
+    url('../fonts/UbuntuMono-B.ttf') format('TrueType');
+}
+
+fieldset{
+    margin: auto ;
+    margin-top: 120px ;
+    width: 420px ;
+    /*height: 300px ;*/
+    border: 10px solid #59B459 ;
+    box-shadow: 0px 5px 10px #59B459 ;
+    padding-top: 40px;
+    padding-left: 50px ;
+    border-radius : 10px 10px 10px 10px ;
+    font-family: "UbuntuRegular", serif ;
+}
+
+legend{
+    
+}
+
+input[type="text"], input[type="password"]{
+    width: 400px ;
+    height: 35px ;
+    box-shadow: 0px 5px 30px black inset;
+    padding-left: 10px ;
+    padding-top: 6px ;
+    padding-bottom: 6px ;
+}
+
+
+input[type="submit"], input[type="reset"]{
+    background-color: #59B459 ;
+    min-height: 30px;
+    border: 1px solid grey ;
+    border-radius : 2px 2px 2px 2px ;
+    color: white ;
+    font-weight: bold ;
+    padding-bottom: 5px ;
+    padding-left: 15px ;
+    padding-right: 15px ;
+    /*position: relative;
+    left: 220px;*/
+    margin-top: 15px ;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover{
+    background-color: #59B459 ;
+}
+
+.erreur{
+    height: 30px;
+    width: 400px;
+    background-color: #C00000 ;
+    opacity: 0.85;
+    border-radius: 4px;
+    color: white;
+    display: none;
+}

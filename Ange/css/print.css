@@ -1,0 +1,133 @@
+*{
+    padding: 0px ;
+    margin: 0px ;
+}
+
+body{
+    /*background: url(../images/bg.png) repeat-x  ;*/
+    background-color: white ;
+    margin-left: 20cm;
+    text-align: center;
+}
+
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuLigth';
+    src: url('../fonts/Ubuntu-L.ttf');
+    url('../fonts/Ubuntu-L.ttf') format('TrueType');
+}
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuCondensed';
+    src: url('../fonts/Ubuntu-C.ttf');
+    url('../fonts/Ubuntu-C.ttf') format('TrueType');
+}
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuMono';
+    src: url('../fonts/Ubuntu-M.ttf');
+    url('../fonts/Ubuntu-M.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuRegular';
+    src: url('../fonts/Ubuntu-R.ttf');
+    url('../fonts/Ubuntu-R.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuMonoRegular';
+    src: url('../fonts/UbuntuMono-R.ttf');
+    url('../fonts/UbuntuMono-R.ttf') format('TrueType');
+}
+
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'UbuntuMonoBold';
+    src: url('../fonts/UbuntuMono-B.ttf');
+    url('../fonts/UbuntuMono-B.ttf') format('TrueType');
+}
+
+#cadre{
+    width: 960px ;
+    /*margin-left: 196px ;
+    margin-right: 197px ;*/
+    /*border : 2px groove black ;*/
+    margin : auto ;
+    min-height: 600px ;
+    margin-top: 5px ;
+    margin-bottom: 20px ;
+    background-color: white;  
+    box-shadow : 0px 5px 30px black;
+    border-radius : 10px 10px 10px 10px ;
+}
+
+#corps{
+    
+}
+
+#corps #zonetexte{
+    padding: 20px 20px 20px 20px;
+    text-align: justify;
+    font-family: 'UbuntuRegular', serif;
+}
+
+#corps #zonetexte p {
+    font-family: 'UbuntuRegular', serif;
+    font-size: 0.90em ;
+    color: #303030 ;
+}
+
+.rouge{background-color: rgba(139,15,29, 0.8) ;}
+.jaune{background-color: rgba(143,143,0, 0.8) ;}
+.vert{background-color: rgba(0,97,0, 0.8) ;}
+
+#tablo {  
+    border-collapse: collapse ;
+    border: 1px solid black ;
+    width: 100% ;
+    border-radius: 10px 10px 0px 0px ;
+    margin-bottom: 10px;
+}
+
+#tablo th {
+    height: 25px;
+    background-color: #59B459 ;
+    border: 1px solid black ;
+    font-size: 0.8em ;
+    color: white ;
+}
+
+#tablo td {
+    border: 1px solid black ;
+    font-size: 0.75em ;
+    padding : 7px ;
+    padding-left: 5px ;
+    padding-right: 5px ;
+}
+
+td {
+    font-size: 0.75em ;
+    padding : 7px ;
+    padding-left: 5px ;
+    padding-right: 5px ;
+}
+
+#tablo tr {
+    height: 30px;
+}
+
+.lignepaire {
+    background-color: white ;
+}
+.ligneimpaire {
+    background-color: #E7E7E7 ;
+}
+
+h2{
+    color: #59B459 ;
+    margin-bottom: 10px ;
+    font-size: 1.2em;
+}
+
+h3{
+    color: #3DAFF0 ;
+    margin-bottom: 10px ;
+}
+

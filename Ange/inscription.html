@@ -1,0 +1,68 @@
+<div id="here">
+    Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> > <a href="">Ajouter utilisateur</a>
+</div>
+
+<div id="zonetexte">
+    <form method="post" action="" name="inscription"  enctype="multipart/form-data">
+    <table class="tableformulaire">
+        <tr>
+            <td></td> <td> <p class="erreur" style="color: white;"></p></td>
+        </tr>
+        <tr>
+            <td>Nom</td> <td> <input type="text" name="nom" required > </td>
+        </tr>
+        <tr>
+            <td>Pr&eacute;nom</td> <td> <input type="text" name="prenom" required > </td>
+        </tr>
+        <tr>
+            <td>Sexe</td>
+            <td>
+                <select id="combo" name="sexe">
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Pseudo</td> <td> <input type="text" name="pseudo" required > </td>
+        </tr>
+        <tr>
+            <td>Mot de passe</td> <td> <input type="password" name="passwd" value="angetg" required readonly> </td>
+        </tr>
+        <tr>
+            <td>
+				Confirmer mot de passe</td> <td> <input type="password" name="passwd2" value="angetg"  required readonly> 
+			</td>
+        </tr>
+        <tr>
+            <td>Droit</td>
+            <td>
+                <select id="combo" name="droit">
+                    <option value="admin">Aministrateur</option>
+                    <option value="rw">Lecture et &eacute;criture</option>
+                    <option value="r">Lecture</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Accès aux notifications</td>
+            <td>
+                <select id="combo" name="droitnotification">
+                    <option value="toutes">Voir toutes</option>
+                    <option value="courrier">Courrier uniquement</option>
+                </select>
+            </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-success" type="reset" style="width: 100px;" >Effacer</button>
+                <button id="btinscription" class="btn btn-success" type="submit" style="width: 100px;">
+                    <i class="icon-white icon-ok-sign"></i>Valider</button>
+            </td>
+        </tr>
+    </table>
+    
+</form>
+</div>
