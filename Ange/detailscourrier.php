@@ -24,6 +24,7 @@
         $donnees = $requete->fetch() ;
         $codeTransfert = $donnees['transfert'] ;
         $idUserCourrier = $donnees['iduser'] ;
+        $chemin = $donnees['chemin'] ;
     ?>
     
     <table>
@@ -71,7 +72,7 @@
             if( $idUserLogged == $idUserCourrier || $droit == "admin" ){
                 echo '<a class="btn btn-success" href="principale.php?page=modifiercourrier&amp;idc='.$idCourrier.'" >Modifier</a> ';
                 echo '<a class="btn btn-success" href="#" id="lientransfert">Transferer &agrave;</a> ';
-                echo '<a class="btn btn-success" href="principale.php?page" >T&eacute;l&eacute;charger</a> ';
+                echo '<a class="btn btn-success" href="'.$chemin.'" >T&eacute;l&eacute;charger</a> ';
                 echo '<a class="btn btn-danger" href="#" id="btsupprimer">Supprimer</a> ' ;
             }
             elseif($droit == "rw" || $droit == "admin"){

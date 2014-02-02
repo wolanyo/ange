@@ -13,6 +13,7 @@
         private $suiteDonnee ;
         private $idExpediteur ;
         private $idReceveur ;
+        private $chemin ;
         
         public function getIdTransfert() { return $this->idTransfert ; }
         public function getIdCourrier() { return $this->idCourrier ; }
@@ -24,6 +25,7 @@
         public function getSuiteDonnee() { return $this->suiteDonnee ; }
         public function getIdExpediteur() { return $this->idExpediteur ; }
         public function getIdReceveur() { return $this->idReceveur ; }
+        public function getChemin() {return $this->chemin ;}
         
         public function setIdTransfert($value) { $this->idTransfert = $value ; }
         public function setIdCourrier($value) { $this->idCourrier = $value ; }
@@ -35,6 +37,7 @@
         public function setSuiteDonnee($value) { $this->suiteDonnee = $value ; }
         public function setIdExpediteur($value) { $this->idExpediteur = $value ; }
         public function setIdReceveur($value) { $this->idReceveur = $value ; }
+        public function setIdChemin($value) { $this->chemin = $value ; }
         
         public function save() {
             $connect = new Connexion ;

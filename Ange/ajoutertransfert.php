@@ -1,3 +1,7 @@
+<?php
+    @session_start() ;
+    include_once("connexion.php") ;
+?>
 
 <div id="here">
     Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> >
@@ -15,6 +19,23 @@
         </tr>
         <tr>
             <td>Date de transfert</td> <td> <input class="date" type="text" name="datetransfert" required> </td>
+        </tr>
+        <tr>
+            <td>&Agrave;</td> 
+            <td>
+            <?php
+		        $connect = new Connexion ;
+		        $bd = $connect->seConnecter() ;
+		        $idCourrier = $_SESSION['idc'] ;
+		        $requete = $bd->query("SELECT * FROM user ORDER BY nom ASC, prenom ASC") ;
+		        echo '<select id="combo" name="user">' ;
+		        echo '<option value="Autres">Autres</option>' ;
+		        while($donnees = $requete->fetch() ){
+		        	echo '<option value="'.$donnees['iduser'].'">'.$donnees['nom'].' '.$donnees['prenom'].'</option>' ;
+		        }
+		        echo '</select>';
+		    ?>
+            </td>
         </tr>
         <tr>
             <td>Transferer &agrave;</td> <td> <input type="text" name="receveur" required> </td>
