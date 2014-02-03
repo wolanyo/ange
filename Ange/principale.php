@@ -160,8 +160,8 @@
             
             <div id="pied">
                 <p>
-                    &copy; Wolasoft Corporation D&eacute;cembre 2012 <br>
-                    Tel: 22 42 81 79 / Cel: 91 92 85 94 / E-mail: wolasoftcorporation@gmail.com / Lom&eacute;-Togo
+                    &copy; Wolasoft Corporation F&eacute;vrier 2013 <br>
+                    Tel: 22 42 81 79 / Cel: 91 92 85 94 / E-mail: wolasoft@wolasoft.com / Lom&eacute;-Togo
                 </p>
             </div>
         </div>

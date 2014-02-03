@@ -25,9 +25,12 @@
             <?php
                 $connect = new Connexion ;
                 $bd = $connect->seConnecter() ;
-                
-                $requete = $bd->query("SELECT * FROM courrier WHERE supprimer = 0 ORDER BY idcourrier DESC") ;
-                
+                if( $droit == "admin" || $droit == "r")
+                	$requete = $bd->query("SELECT * FROM courrier WHERE supprimer = 0 ORDER BY idcourrier DESC") ;
+                else
+                	$requete = $bd->query("SELECT * FROM courrier c, transfert t WHERE c.idcourrier = t.idcourrier
+                	c.supprimer = 0 AND c.classer = 1 AND (c.iduser=".$_SESSION['iduser']." OR t.idreceveur=".$_SESSION['iduser'].")
+                	ORDER BY c.idcourrier DESC") ;
                 $rowsColor = 0 ;
                 while( $donnees = $requete->fetch() ){
                     ?>

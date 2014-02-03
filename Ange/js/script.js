@@ -1,7 +1,79 @@
 $(function() {
-    
-    //formulaire de connexion a l'application
-    
+	//classer ou archiver un courrier
+	$('#archiver').click(function(){
+		$( "#dialog" ).html("L'archivage du courrier est irreversible.\nConfirmer votre action");
+		$( "#dialog" ).dialog({
+			modal: true,
+			height : 200,
+			width : 400,
+			buttons: {
+				"Oui": function() {
+					$.post(
+						'ajax.php', {
+							idc : $('input[name="codecourrier"]').val(),
+							code : 'cc' }, function(reponseTexte){// cc classer courrier
+							var codeExiste = reponseTexte ;
+							if( codeExiste == 1){
+								alert('Courrier classe');
+								$(location).attr('href', "principale.php?page=listecourrier");
+							}
+							else{
+								$('.erreur3').css('display', 'block') ;
+								$('.erreur3').css('background-color', '#EE2622') ;
+								$('.erreur3').html('Erreur') ;
+							}
+						}
+					  );
+					$( this ).dialog( "close" );
+				},
+				"Non": function() {
+					alert('Archivage annulee!');	
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
+	
+	//desarchiver
+	$('#desarchiver').click(function(){
+		$( "#dialog" ).html("Desarchivage du courrier?.\nConfirmer votre action");
+		$( "#dialog" ).dialog({
+			modal: true,
+			height : 200,
+			width : 400,
+			buttons: {
+				"Oui": function() {
+					$.post(
+						'ajax.php', {
+							idc : $('input[name="codecourrier"]').val(),
+							code : 'dc' }, function(reponseTexte){// cc classer courrier
+							var codeExiste = reponseTexte ;
+							if( codeExiste == 1){
+								alert('Courrier declasse');
+								$(location).attr('href', "principale.php?page=listecourrier");
+							}
+							else{
+								$('.erreur3').css('display', 'block') ;
+								$('.erreur3').css('background-color', '#EE2622') ;
+								$('.erreur3').html('Erreur') ;
+							}
+						}
+					  );
+					$( this ).dialog( "close" );
+				},
+				"Non": function() {
+					alert('desarchivage annulee!');	
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+	});
+	
+	//empecher le telechargement
+	$('#bttelecharger').click(function(){
+        alert("Aucun fichier n'est disponible en telechargement");
+    });
+	//formulaire de connexion a l'application
     $('form[name="connexion"]').submit(function(){
         return false;
     });
@@ -125,7 +197,7 @@ $(function() {
 	
 	//supprimer un courrier
 	$('#btsupprimer').click(function(){
-		$( "#dialog" ).html('La suppression du courrier est irréversible.\nConfirmer votre action');
+		$( "#dialog" ).html('La suppression du courrier est irreversible.\nConfirmer votre action');
 		$( "#dialog" ).dialog({
 			modal: true,
 			height : 200,
@@ -151,7 +223,7 @@ $(function() {
 					$( this ).dialog( "close" );
 				},
 				"Non": function() {
-					alert('Suppression annulée!');	
+					alert('Suppression annulee!');	
 					$( this ).dialog( "close" );
 				}
 			}
@@ -224,7 +296,7 @@ $(function() {
                     }, function(reponseTexte){
                     var codeExiste = reponseTexte ;
                     if( codeExiste == 0){
-                        alert("Le courrier est actuellement transferé\n Pour donner une suite elle doit être d'abord retourné")
+                        alert("Le courrier est actuellement transfere\n Pour donner une suite elle doit être d'abord retourne")
                     }
                     else if( codeExiste == 1){
                         $('.erreur2').css('display', 'block') ;
@@ -369,7 +441,7 @@ $(function() {
 						}, function(reponseTexte){
 							var codeExiste = reponseTexte ;
 							if( codeExiste == 1){
-								alert('Utilisateur désactivé');
+								alert('Utilisateur desactive');
 								$(location).attr('href', "principale.php?page=listeuser");
 							}
 							else{
@@ -382,7 +454,7 @@ $(function() {
 					$( this ).dialog( "close" );
 				},
 				"Non": function() {
-					alert('Désactivation annulée!');	
+					alert('Desactivation annulee!');	
 					$( this ).dialog( "close" ) ;
 				}
 			}
@@ -408,7 +480,7 @@ $(function() {
 						}, function(reponseTexte){
 							var codeExiste = reponseTexte ;
 							if( codeExiste == 1){
-								alert('Utilisateur activé');
+								alert('Utilisateur active');
 								$(location).attr('href', "principale.php?page=listeuser");
 							}
 							else{
@@ -421,7 +493,7 @@ $(function() {
 					$( this ).dialog( "close" );
 				},
 				"Non": function() {
-					alert('Activation annulée!');	
+					alert('Activation annulee!');	
 					$( this ).dialog( "close" ) ;
 				}
 			}
@@ -534,7 +606,7 @@ $(function() {
             $('.erreur3').css('background-color', '#EE2622') ;
             $('.erreur3').html("Le fichier est d&eacute;j&agrave; transferer. elle doit etre d&#39;abord retourn&eacute;") ;
             $('.erreur3').show("slow").delay(4000).hide("slow");
-            //alert("Le fichier est déjà transferer. elle doit etre d'abord retourné") ;
+            //alert("Le fichier est dejà transferer. elle doit etre d'abord retourne") ;
         }
         else{
             window.location = 'principale.php?page=ajoutertransfert' ;
@@ -637,7 +709,7 @@ $(function() {
 	$('.supprtrans').click(function(){
 		var idtransfert = $(this).attr('id') ;
 		var idc = $('input[name="codecourrier"]').val() ;
-		$( "#dialog" ).html('La suppression du transfert est irréversible.\nConfirmer votre action');
+		$( "#dialog" ).html('La suppression du transfert est irreversible.\nConfirmer votre action');
 		$( "#dialog" ).dialog({
 			modal: true,
 			height : 200,
@@ -664,7 +736,7 @@ $(function() {
 					$( this ).dialog( "close" );
 				},
 				"Non": function() {
-					alert('Suppression annulée!');	
+					alert('Suppression annulee!');	
 					$( this ).dialog( "close" ) ;
 				}
 			}
@@ -704,19 +776,19 @@ $(function() {
         }
         //alert(valeur) ;
     });
-    
+	
     //afficher un calendrier pour choisir une date
     $('.date').datepicker() ;
     $(function($){
 	$.datepicker.regional['fr'] = {
 	closeText: 'Fermer',
-	prevText: '&#x3c;Préc',
+	prevText: '&#x3c;Prec',
 	nextText: 'Suiv&#x3e;',
 	currentText: 'Courant',
-	monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin',
-	'Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
-	monthNamesShort: ['Jan','Fév','Mar','Avr','Mai','Jun',
-	'Jul','Aoû','Sep','Oct','Nov','Déc'],
+	monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin',
+	'Juillet','Août','Septembre','Octobre','Novembre','Decembre'],
+	monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
+	'Jul','Aoû','Sep','Oct','Nov','Dec'],
 	dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
 	dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
 	dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],

@@ -276,6 +276,32 @@
 ?>
 
 <?php
+	//classer un courrier
+	if(isset($_POST['code'])){
+		if( $_POST['code'] == "cc" ){
+            classerCourrier($_POST['idc']);
+            echo "1" ;
+		}
+	}
+	else{
+        echo "2" ;
+    }
+?>
+
+<?php
+	//declasser un courrier
+	if(isset($_POST['code'])){
+		if( $_POST['code'] == "dc" ){
+            declasserCourrier($_POST['idc']);
+            echo "1" ;
+		}
+	}
+	else{
+        echo "2" ;
+    }
+?>
+
+<?php
     //modifier la suite donné a un courrier
     if(isset($_POST['code'])){
         if( $_POST['code'] == "mc/ds" ){

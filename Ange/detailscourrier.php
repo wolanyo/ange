@@ -6,7 +6,7 @@
     $droit = $_SESSION['droit'] ;
 ?>
 <div id="here">
-    Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> <a href="principale.php?page=listecourrier">Liste des courriers</a> <a href="">D&eacute;tails du courrier</a>
+    Vous &ecirc;tes ici :  <a href="principale.php?page=accueil">Accueil</a> > <a href="principale.php?page=listecourrier">Liste des courriers</a> > <a href="">D&eacute;tails du courrier</a>
 </div>
 
 <div id="zonetexte">
@@ -72,8 +72,7 @@
             if( $idUserLogged == $idUserCourrier || $droit == "admin" ){
                 echo '<a class="btn btn-success" href="principale.php?page=modifiercourrier&amp;idc='.$idCourrier.'" >Modifier</a> ';
                 echo '<a class="btn btn-success" href="#" id="lientransfert">Transferer &agrave;</a> ';
-                echo '<a class="btn btn-success" href="'.$chemin.'" >T&eacute;l&eacute;charger</a> ';
-                echo '<a class="btn btn-success" href="#" >Classer</a> ';
+                echo '<a class="btn btn-success" href="#" id="archiver" >Archiver</a> ';
                 echo '<a class="btn btn-danger" href="#" id="btsupprimer">Supprimer</a> ' ;
             }
             elseif($droit == "rw" || $droit == "admin"){
@@ -81,8 +80,14 @@
             }
         ?>
 
-        <!--a class="btn btn-success" <?php echo 'href="imprimer.php?idc="'.$idCourrier.'"' ; ?> ><i class="icon-print"></i>Imprimer</a-->
-        <?php echo '<a class="btn btn-success" href="dompdf.php?idc='.$idCourrier.'" ><i class="icon-print"></i>Imprimer</a> '; ?>
+        <!--a class="btn btn-success" <?php //echo 'href="imprimer.php?idc="'.$idCourrier.'"' ; ?> ><i class="icon-print"></i>Imprimer</a-->
+        <?php 
+        	echo '<a class="btn btn-success" href="dompdf.php?idc='.$idCourrier.'" ><i class="icon-print"></i>Imprimer</a> '; 
+        	if($chemin == "")
+        		echo '<a class="btn btn-inverse" href="'.$chemin.'" id="bttelecharger">T&eacute;l&eacute;charger</a> ';
+        	else
+        		echo '<a class="btn btn-success" href="'.$chemin.'">T&eacute;l&eacute;charger</a> ';
+        ?>
         
         <div id="dialog" title="Suppression">
 			

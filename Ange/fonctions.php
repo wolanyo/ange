@@ -5,10 +5,12 @@
         $listePage = array (
             'accueil' => 'accueil.php' ,
             'listecourrier' => 'listecourrier.php' ,
+        	'archives' => 'listearchive.php' ,
             'listeuser' => 'listeuser.php' ,
             'detailscourrier' => 'detailscourrier.php' ,
             'inscription' => 'inscription.html' ,
             'details' => 'details.php' ,
+        	'detailsarchive' => 'detailsarchive.php' ,
             'index' => 'index.php' ,
             'ajoutercourrier' => 'ajoutercourrier.php',
             'ajoutertransfert' => 'ajoutertransfert.php',
@@ -18,6 +20,7 @@
             'modifieruser' => 'modifieruser.php',
             'notifications' => 'notifications.php',
             'notificationstransfert' => 'notificationstransfert.php',
+        	'notificationstransfertnonvu' => 'notificationstransfertnonvu.php',
             'photo' => 'photo.php',
             'password' => 'password.php',
             'parametres' => 'parametres.php'
@@ -28,6 +31,9 @@
         }
         if( $page == 'listecourrier' ){
             return $listePage['listecourrier'] ;
+        }
+        if( $page == 'archives' ){
+        	return $listePage['archives'] ;
         }
         elseif( $page == 'listeuser' ){
             return $listePage['listeuser'] ;
@@ -41,8 +47,14 @@
         elseif( $page == 'detailscourrier' ){
             return $listePage['detailscourrier'] ;
         }
+        elseif( $page == 'detailsarchive' ){
+        	return $listePage['detailsarchive'] ;
+        }
         elseif( $page == 'ajoutertransfert' ){
             return $listePage['ajoutertransfert'] ;
+        }
+        elseif ($page == 'notificationstransfertnonvu') {
+        	return $listePage['notificationstransfertnonvu'];
         }
         elseif( $page == 'modifiercourrier' ){
             return $listePage['modifiercourrier'] ;
@@ -205,6 +217,35 @@
                 //$idUser = $_SESSION['iduser'] ;
             }
         $requete->closeCursor() ;
+    }
+    
+    function classerCourrier($idCourrier){
+    	$connect = new Connexion ;
+    	$bd = $connect->seConnecter() ;
+    	$requete = $bd->prepare("UPDATE courrier SET classer=1 WHERE idcourrier=:idc") ;
+    	$requete->bindValue(":idc",$idCourrier ,PDO::PARAM_INT) ;
+    	$requete->execute() ;
+    	$requete->closeCursor() ;
+    }
+    
+    function declasserCourrier($idCourrier){
+    	$connect = new Connexion ;
+    	$bd = $connect->seConnecter() ;
+    	$requete = $bd->prepare("UPDATE courrier SET classer=0 WHERE idcourrier=:idc") ;
+    	$requete->bindValue(":idc",$idCourrier ,PDO::PARAM_INT) ;
+    	$requete->execute() ;
+    	$requete->closeCursor() ;
+    }
+    
+    function getNotificationsTransfertNonVu($idUser) {
+    	$connect = new Connexion;
+    	$bd = $connect->seConnecter();
+    	$requete = $bd->prepare("SELECT COUNT(idtransfert) as nbt FROM transfert WHERE consulter = 0 AND  idreceveur = :idr");
+    	$requete->bindValue(":idr", $idUser, PDO::PARAM_INT);
+    	$requete->execute();
+    	$donnees = $requete->fetch();
+    	return $donnees['nbt'];
+    	$requete->closeCursor();
     }
     
     function upload($index, $destination, $maxsize=FALSE, $extensions=FALSE) {
